@@ -98,8 +98,8 @@ class ImageUpload extends Component {
     save_data.forEach(function(infoArray, index){
        var xArray = infoArray.x.join(",");
        var yArray = infoArray.y.join(",");
-       csvContent += index*2-1 < data.length ? xArray+ "\n" : xArray;
-       csvContent += index*2 < data.length ? yArray+ "\n" : yArray;
+       csvContent += index*2-1 < 1000 ? xArray+ "\n" : xArray;
+       csvContent += index*2 < 1000 ? yArray+ "\n" : yArray;
     }); 
 
     var encodedUri = encodeURI(csvContent);
