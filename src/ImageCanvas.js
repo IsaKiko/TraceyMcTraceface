@@ -45,8 +45,8 @@ class ImageCanvas extends Component {
 
     if (this.props.setCoords){
         var coordNumber = this.state.coordNumber;
-        this.props.onClick([x_pos, y_pos, coordNumber]);  
         this.setState({coordNumber: this.state.coordNumber+1})
+        this.props.onClick([x_pos, y_pos, coordNumber]);  
 
       // }
       // onClick is a function that's handed down as a prop, which means, if i give it the 

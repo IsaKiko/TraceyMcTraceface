@@ -212,7 +212,7 @@ class ImageUpload extends Component {
               .on("click", function(){this.value = ""})
               .on("change",function(){
                 component.setState(
-                  {d_x1: this.value,
+                  {d_x2: this.value,
                   xScale: d3.scale.linear().range([parseFloat(component.state.d_x1), parseFloat(this.value)]).domain([component.state.c_x1, coords[0]])
                   });                
             });
