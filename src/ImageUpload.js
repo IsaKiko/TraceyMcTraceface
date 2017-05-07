@@ -67,6 +67,46 @@ class ImageUpload extends Component {
     download('TraceData.json', JSON.stringify(save_data));
   }
 
+ _handleExportClick_csv(e) {
+
+    // create download function:
+    function download(filename) {
+        var link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", filename);
+        document.body.appendChild(link); // Required for FF
+
+        link.click(); 
+    }
+
+    // scale data from viewbox coordinates to user coordinates
+    var xScale = this.state.xScale;
+    var yScale = this.state.yScale;
+
+    var save_data = [];
+
+    var data = this.state.data.map(function(d, idx){
+      var scaled_data = {
+            x: d.x.map(function(elx){return xScale(elx)}),
+            y: d.y.map(function(ely){return yScale(ely)}),
+            trace: d.trace
+          };
+      save_data[idx] = scaled_data;
+      })
+
+    var csvContent = "data:text/csv;charset=utf-8,";
+    save_data.forEach(function(infoArray, index){
+       var xArray = infoArray.x.join(",");
+       var yArray = infoArray.y.join(",");
+       csvContent += index*2-1 < data.length ? xArray+ "\n" : xArray;
+       csvContent += index*2 < data.length ? yArray+ "\n" : yArray;
+    }); 
+
+    var encodedUri = encodeURI(csvContent);
+
+    download('TraceData.csv');
+  }
+
 
   _handleImageChange(e) {
     e.preventDefault();
@@ -298,6 +338,7 @@ class ImageUpload extends Component {
             <div className={buttonCoordsClass} onClick={(e)=>this._handleCoordClick(e)} > Set up coordinate system</div>
             <div className="green button" style={{background: col}} onClick={(e)=>this._handleTraceClick(e)} > {buttonTraceText} </div>
             <div className="green button" onClick={(e)=>this._handleExportClick(e)} > Export JSON  data </div>
+            <div className="green button" onClick={(e)=>this._handleExportClick_csv(e)} > Export CSV  data </div>
           </div>
           <div id="boundingbox">
           <ImageCanvas xScale={this.state.xScale} yScale={this.state.yScale} cScale={cScale} onClick={(coords)=>this._handlePointSelect(coords)} setCoords={this.state.setCoords} trace={this.state.trace} traceNumber={this.state.traceNumber} file={this.state.file.name} src={imagePreviewUrl} />
