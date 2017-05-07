@@ -1,0 +1,172 @@
+*{
+  /*border: 1px solid red;*/
+}
+
+.App {
+    text-align: center
+}
+
+.App-logo {
+    -webkit-animation: App-logo-spin infinite 20s linear;
+    animation: App-logo-spin infinite 20s linear;
+    height: 80px
+}
+
+.App-header {
+    background-color: #222;
+    height: 80px;
+    padding: 20px;
+    color: #fff
+}
+
+.App-intro {
+    font-size: large
+}
+
+h1 {
+    font-weight: lighter
+}
+
+@-webkit-keyframes App-logo-spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+
+    to {
+        -webkit-transform: rotate(1turn);
+        transform: rotate(1turn)
+    }
+}
+
+@keyframes App-logo-spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+
+    to {
+        -webkit-transform: rotate(1turn);
+        transform: rotate(1turn)
+    }
+}
+
+.previewText {
+    padding: 20px
+}
+
+.maindiv {
+    -webkit-box-orient: vertical;
+    -ms-flex-direction: column;
+    flex-direction: column
+}
+
+.flexrow,.maindiv {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-direction: normal
+}
+
+.flexrow {
+    -webkit-box-orient: horizontal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    padding: 20px;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center
+}
+
+.canvasContainer {
+    position: relative;
+    width: 60rem;
+    height: 60rem;
+    max-width: 100%;
+    max-height: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50%;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    margin: 0 auto
+}
+
+.imgContainer {
+    padding: 20px;
+    background-color: #f0f0f0;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    paddingBottom: 50px
+}
+
+.green {
+    background-color: #158d54
+}
+
+.blue,.green {
+    color: #f0f0f0
+}
+
+.blue {
+    background-color: #501e9a
+}
+
+.button {
+    padding: 7px;
+    margin-right: 5px;
+    margin-left: 5px;
+    cursor: pointer
+}
+
+.button:focus {
+    outline: 1px dotted #000;
+    outline: 5px auto -webkit-focus-ring-color
+}
+
+form {
+    margin: none;
+    padding: none
+}
+
+#svgOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: crosshair
+}
+
+.line {
+    stroke: rgba(121,241,184,.8);
+    stroke-width: .5;
+    stroke-dasharray: 2,2;
+    pointer-events: none;
+    shape-rendering: crispEdges;
+    vector-effects: non-scaling-stroke
+}
+
+.coord-label {
+    position: relative;
+    position: absolute;
+    color: #47bf86;
+    font-size: 1.2rem;
+    width: 80px;
+    background-color: hsla(0,0%,94%,0);
+    border: none
+}
+
+.dataPoint {
+    opacity: .6;
+    pointer-events: none;
+    shape-rendering: crispEdges;
+    vector-effects: non-scaling-stroke
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif
+}
